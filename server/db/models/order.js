@@ -31,10 +31,10 @@ const Order = db.define('orders', {
   },
   sessionId: {
     type: Sequelize.STRING
-  },
-  userId: {
-    type: Sequelize.INTEGER
   }
+  //   userId: {
+  //     type: Sequelize.INTEGER
+  //   }
 })
 
 module.exports = Order
