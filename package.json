@@ -1,7 +1,8 @@
 {
-  "name": "zulu-raptors",
+
+  "name": "grace-lager",
   "version": "2.0.0",
-  "description": "Some boilerplate code to get you started - get shakin'!",
+  "description": "An e-commerce store to buy the perfect beers!",
   "engines": {
     "node": ">= 7.0.0"
   },
