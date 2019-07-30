@@ -11,20 +11,28 @@ const Product = db.define('product', {
   },
   brand: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
   },
   description: {
     type: Sequelize.TEXT,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
   },
   imageUrl: {
     type: Sequelize.STRING,
-    allowNull: true
+    defaultValue:
+      'https://cdn.shopify.com/s/files/1/1061/1924/products/Beer_Emoji_large.png?v=1480481062'
   },
   quantity: {
     type: Sequelize.INTEGER,
     allowNull: false,
     validate: {
+      notEmpty: true,
       min: 0
     }
   },
@@ -32,8 +40,13 @@ const Product = db.define('product', {
     type: Sequelize.FLOAT,
     allowNull: false,
     validate: {
-      notEmpty: true
+      notEmpty: true,
+      min: 0
     }
+  },
+  feature: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
   }
 })
 
