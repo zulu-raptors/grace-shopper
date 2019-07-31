@@ -30,7 +30,6 @@ const Product = db.define('product', {
   },
   quantity: {
     type: Sequelize.INTEGER,
-    allowNull: false,
     defaultValue: 1,
     validate: {
       notEmpty: true,
@@ -39,7 +38,6 @@ const Product = db.define('product', {
   },
   price: {
     type: Sequelize.INTEGER,
-    allowNull: false,
     defaultValue: 0,
     validate: {
       notEmpty: true,
