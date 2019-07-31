@@ -27,14 +27,12 @@ const Order = db.define('orders', {
     type: Sequelize.ENUM('created', 'completed')
   },
   total: {
-    type: Sequelize.FLOAT
+    type: Sequelize.INTEGER,
+    defaultValue: 0
   },
   sessionId: {
     type: Sequelize.STRING
   }
-  //   userId: {
-  //     type: Sequelize.INTEGER
-  //   }
 })
 
 module.exports = Order
