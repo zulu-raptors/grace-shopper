@@ -32,7 +32,7 @@ class SingleProduct extends Component {
         <img src={singleProduct.imageUrl} className="product-image" />
         <p>{singleProduct.name}</p>
         <p>{singleProduct.brand}</p>
-        <p>{`$${singleProduct.price}`}</p>
+        <p>{`$${singleProduct.price / 100}`}</p>
         <p>{singleProduct.description}</p>
         <div>
           <form>
