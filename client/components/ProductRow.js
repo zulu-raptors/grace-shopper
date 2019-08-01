@@ -9,7 +9,7 @@ const ProductRow = props => {
         <img src={product.imageUrl} className="product-image" />
         <p>{product.name}</p>
         <p>{product.brand}</p>
-        <p>{product.price}</p>
+        <p>{product.price / 100}</p>
       </Link>
       <button type="button">Add to Cart</button>
     </div>

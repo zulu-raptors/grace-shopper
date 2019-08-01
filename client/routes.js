@@ -2,9 +2,10 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, UserHome} from './components'
+import {Login, Signup} from './components'
 import {me} from './store'
 import ProductList from './components/ProductList'
+import Cart from './components/Cart'
 import SingleProduct from './components/SingleProduct'
 
 /**
@@ -16,15 +17,17 @@ class Routes extends Component {
   }
 
   render() {
-    const {isLoggedIn} = this.props
+    //const {isLoggedIn} = this.props
 
     return (
-      <Switch>
+      <withRouter>
         {/* Routes placed here are available to all visitors */}
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={Signup} />
+        <Route exact path="/cart" component={Cart} />
         <Route exact path="/" component={ProductList} />
+      </withRouter>
         <Route path="/products/:productId" component={SingleProduct} />
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
       </Switch>
     )
   }
