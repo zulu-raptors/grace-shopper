@@ -6,6 +6,8 @@ import {Login, Signup} from './components'
 import {me} from './store'
 import ProductList from './components/ProductList'
 import Cart from './components/Cart'
+import SingleProduct from './components/SingleProduct'
+
 /**
  * COMPONENT
  */
@@ -25,6 +27,8 @@ class Routes extends Component {
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/" component={ProductList} />
       </withRouter>
+        <Route path="/products/:productId" component={SingleProduct} />
+      </Switch>
     )
   }
 }

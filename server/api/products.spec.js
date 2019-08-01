@@ -12,7 +12,7 @@ describe('Product routes', () => {
 
 describe('/api/products/', () => {
   const newBeer = {
-    name: 'Best Beer',
+    name: 'Premium Pils',
     brand: 'Best Beer Brand',
     description: 'The Best Beer Around',
     price: 2000
