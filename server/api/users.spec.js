@@ -4,7 +4,7 @@ const {expect} = require('chai')
 const request = require('supertest')
 const db = require('../db')
 const app = require('../index')
-const User = db.model('user')
+const User = require('../db/models/user')
 
 describe('User routes', () => {
   beforeEach(() => {
@@ -12,12 +12,14 @@ describe('User routes', () => {
   })
 
   describe('/api/users/', () => {
-    const codysEmail = 'cody@puppybook.com'
+    const cody = {
+      email: 'cody@puppybook.com',
+      firstName: 'Cody',
+      lastName: 'ThePug'
+    }
 
     beforeEach(() => {
-      return User.create({
-        email: codysEmail
-      })
+      return User.create(cody)
     })
 
     it('GET /api/users', async () => {
@@ -26,7 +28,7 @@ describe('User routes', () => {
         .expect(200)
 
       expect(res.body).to.be.an('array')
-      expect(res.body[0].email).to.be.equal(codysEmail)
+      expect(res.body[0].email).to.be.equal(cody.email)
     })
   }) // end describe('/api/users')
 }) // end describe('User routes')
