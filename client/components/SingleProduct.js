@@ -9,6 +9,7 @@ class SingleProduct extends Component {
       quantity: ''
     }
     this.handleChange = this.handleChange.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount() {
@@ -23,7 +24,15 @@ class SingleProduct extends Component {
     console.log(this.state)
   }
 
-  handleClick(event) {}
+  handleClick(event) {
+    console.log('stored')
+    localStorage.setItem('item', this.props.singleProduct.name)
+    localStorage.setItem('quantity', this.state.quantity)
+    localStorage.setItem(
+      'total',
+      this.state.quantity * this.props.singleProduct.price
+    )
+  }
 
   render() {
     const singleProduct = this.props.singleProduct
@@ -34,6 +43,7 @@ class SingleProduct extends Component {
         <p>{singleProduct.brand}</p>
         <p>{`$${singleProduct.price / 100}`}</p>
         <p>{singleProduct.description}</p>
+        <p>{localStorage.total}</p>
         <div>
           <form>
             <label htmlFor="quantity">quantity:</label>
@@ -43,7 +53,7 @@ class SingleProduct extends Component {
               value={this.state.quantity}
             />
           </form>
-          <button type="submit" onClick={this.props.handleClick}>
+          <button type="submit" onClick={this.handleClick}>
             Add item
           </button>
         </div>
