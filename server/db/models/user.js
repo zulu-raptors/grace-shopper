@@ -2,7 +2,7 @@ const crypto = require('crypto')
 const Sequelize = require('sequelize')
 const db = require('../db')
 
-const User = db.define('users', {
+const User = db.define('user', {
   firstName: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -49,6 +49,10 @@ const User = db.define('users', {
     type: Sequelize.STRING
   },
   emailConfirm: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
+  },
+  isAdmin: {
     type: Sequelize.BOOLEAN,
     defaultValue: false
   }
