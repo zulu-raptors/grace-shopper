@@ -51,6 +51,10 @@ const User = db.define('user', {
   emailConfirm: {
     type: Sequelize.BOOLEAN,
     defaultValue: false
+  },
+  isAdmin: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
   }
 })
 
