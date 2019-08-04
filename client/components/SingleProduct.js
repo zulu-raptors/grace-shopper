@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {getProductThunk} from '../store/product'
+import {addToCartThunk} from '../store/cart'
 
 class SingleProduct extends Component {
   constructor(props) {
@@ -24,14 +25,9 @@ class SingleProduct extends Component {
     console.log(this.state)
   }
 
-  handleClick(event) {
-    console.log('stored')
-    localStorage.setItem('item', this.props.singleProduct.name)
-    localStorage.setItem('quantity', this.state.quantity)
-    localStorage.setItem(
-      'total',
-      this.state.quantity * this.props.singleProduct.price
-    )
+  handleClick() {
+    console.log(this.props.match.params.productId, this.state.quantity)
+    this.props.addToCart(this.props.singleProduct, this.state.quantity)
   }
 
   render() {
@@ -64,7 +60,8 @@ class SingleProduct extends Component {
 
 const mapState = state => ({singleProduct: state.product})
 const mapDispatch = dispatch => ({
-  getSingleProduct: id => dispatch(getProductThunk(id))
+  getSingleProduct: id => dispatch(getProductThunk(id)),
+  addToCart: (product, quantity) => dispatch(addToCartThunk(product, quantity))
 })
 
 export default connect(mapState, mapDispatch)(SingleProduct)

@@ -7,6 +7,7 @@ import {me} from './store'
 import ProductList from './components/ProductList'
 import Cart from './components/Cart'
 import SingleProduct from './components/SingleProduct'
+import Checkout from './components/Checkout'
 
 /**
  * COMPONENT
@@ -25,6 +26,7 @@ class Routes extends Component {
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/cart" component={Cart} />
+        <Route exact path="/checkout" component={Checkout} />
         <Route exact path="/" component={ProductList} />
         <Route path="/products/:productId" component={SingleProduct} />
       </withRouter>
