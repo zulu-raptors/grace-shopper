@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {getProductThunk} from '../store/product'
+import {addToCartThunk} from '../store/cart'
 
 class SingleProduct extends Component {
   constructor(props) {
@@ -9,6 +10,7 @@ class SingleProduct extends Component {
       quantity: ''
     }
     this.handleChange = this.handleChange.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount() {
@@ -23,7 +25,10 @@ class SingleProduct extends Component {
     console.log(this.state)
   }
 
-  handleClick(event) {}
+  handleClick() {
+    console.log(this.props.match.params.productId, this.state.quantity)
+    this.props.addToCart(this.props.singleProduct, this.state.quantity)
+  }
 
   render() {
     const singleProduct = this.props.singleProduct
@@ -43,7 +48,7 @@ class SingleProduct extends Component {
               value={this.state.quantity}
             />
           </form>
-          <button type="submit" onClick={this.props.handleClick}>
+          <button type="submit" onClick={this.handleClick}>
             Add item
           </button>
         </div>
@@ -54,7 +59,8 @@ class SingleProduct extends Component {
 
 const mapState = state => ({singleProduct: state.product})
 const mapDispatch = dispatch => ({
-  getSingleProduct: id => dispatch(getProductThunk(id))
+  getSingleProduct: id => dispatch(getProductThunk(id)),
+  addToCart: (product, quantity) => dispatch(addToCartThunk(product, quantity))
 })
 
 export default connect(mapState, mapDispatch)(SingleProduct)
