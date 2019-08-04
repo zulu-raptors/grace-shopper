@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {getCartThunk, updateCartThunk} from '../store/cart'
+import {getCartThunk, updateCartThunk, clearCartThunk} from '../store/cart'
+import EachCart from './EachCart'
 
 class Cart extends Component {
   constructor(props) {
@@ -26,7 +27,9 @@ class Cart extends Component {
   }
 
   handleClick(event) {
-    this.props.updateCart(event.target.id, event.target.value)
+    if (event.target.name === 'clear') {
+      this.props.clearCart()
+    }
   }
 
   render() {
@@ -36,35 +39,19 @@ class Cart extends Component {
         <ul>
           {this.props.cart &&
             this.props.cart.map(order => (
-              <div key={order.id}>
-                <p>
-                  {order.name} ${order.price / 100}
-                </p>
-                <img src={order.imageUrl} className="product-image" />
-                <p>quantity: {order.quantity}</p>
-                <p>total: ${order.quantity * order.price / 100}</p>
-                <div>
-                  <form>
-                    <label htmlFor="quantity">quantity:</label>
-                    <input
-                      type="number"
-                      placeholder={order.quantity}
-                      value={this.state.quantity}
-                      onChange={this.handleChange}
-                    />
-                  </form>
-                  <button
-                    type="submit"
-                    id={order.id}
-                    onClick={this.handleClick}
-                  >
-                    update
-                  </button>
-                </div>
-                <hr />
-              </div>
+              <EachCart
+                key={order.id}
+                order={order}
+                updateCart={this.props.updateCart}
+              />
             ))}
         </ul>
+        <button type="submit" name="order" onClick={this.handleClick}>
+          Submit Order
+        </button>
+        <button type="submit" name="clear" onClick={this.handleClick}>
+          Clear Cart
+        </button>
       </div>
     )
   }
@@ -77,7 +64,8 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     getCart: cart => dispatch(getCartThunk(cart)),
-    updateCart: (id, quantity) => dispatch(updateCartThunk(id, quantity))
+    updateCart: (id, quantity) => dispatch(updateCartThunk(id, quantity)),
+    clearCart: () => dispatch(clearCartThunk())
   }
 }
 

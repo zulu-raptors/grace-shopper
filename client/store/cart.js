@@ -75,9 +75,10 @@ export const addToCartThunk = (product, quantity) => {
       localStorage.setItem('cart', JSON.stringify([{...product, quantity}]))
     } else {
       let orderIndex = JSON.parse(localStorage.getItem('cart')).findIndex(
-        order => order.id === product.id
+        order => Number(order.id) === Number(product.id)
       )
       let newCart = JSON.parse(localStorage.getItem('cart'))
+      console.log('orderIndex', orderIndex, 'id', product.id)
       if (orderIndex === -1) {
         newCart.push({...product, quantity})
         localStorage.setItem('cart', JSON.stringify(newCart))
@@ -94,11 +95,11 @@ export const addToCartThunk = (product, quantity) => {
 export const updateCartThunk = (id, quantity) => {
   return dispatch => {
     let orderIndex = JSON.parse(localStorage.getItem('cart')).findIndex(
-      order => order.id == id
+      order => Number(order.id) === Number(id)
     )
     let newCart = JSON.parse(localStorage.getItem('cart'))
-    if (quantity !== 0) {
-      console.log(orderIndex)
+    console.log(id, orderIndex, newCart[orderIndex].id)
+    if (Number(quantity) !== 0) {
       newCart[orderIndex].quantity = quantity
       localStorage.setItem('cart', JSON.stringify(newCart))
     } else {
@@ -106,6 +107,13 @@ export const updateCartThunk = (id, quantity) => {
       localStorage.setItem('cart', JSON.stringify(newCart))
     }
     dispatch(updateCart(id, quantity))
+  }
+}
+
+export const clearCartThunk = () => {
+  return dispatch => {
+    localStorage.removeItem('cart')
+    dispatch(clearCart())
   }
 }
 
@@ -118,8 +126,10 @@ export const cartReducer = (state = [], action) => {
   switch (action.type) {
     case GET_CART:
       return action.cart
+    ///ADD_TO_CART bugs: need cart state to be consistent
     case ADD_TO_CART:
-      orderIndex = state.findIndex(order => order.id === action.product.id)
+      orderIndex = state.findIndex(order => order.id == action.product.id)
+      console.log(action.product.id, orderIndex)
       if (orderIndex === -1) {
         return [
           ...state,
@@ -137,13 +147,15 @@ export const cartReducer = (state = [], action) => {
     case UPDATE_CART:
       orderIndex = state.findIndex(order => order.id == action.id)
       newState = [...state]
-      if (action.quantity !== 0) {
+      if (Number(action.quantity) !== 0) {
         newState[orderIndex].quantity = action.quantity
         return newState
       } else {
         newState.splice(orderIndex, 1)
-        localStorage.setItem('cart', JSON.stringify(newState))
+        return newState
       }
+    case CLEAR_CART:
+      return []
 
     // case ADD_TO_CART:
     //   searchId = state.findIndex(product => product.id === action.product.id)
