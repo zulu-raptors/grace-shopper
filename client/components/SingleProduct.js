@@ -39,6 +39,7 @@ class SingleProduct extends Component {
         <p>{singleProduct.brand}</p>
         <p>{`$${singleProduct.price / 100}`}</p>
         <p>{singleProduct.description}</p>
+        <p>{localStorage.total}</p>
         <div>
           <form>
             <label htmlFor="quantity">quantity:</label>
