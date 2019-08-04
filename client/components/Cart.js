@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {getCartThunk, updateCartThunk, clearCartThunk} from '../store/cart'
 import EachCart from './EachCart'
+import {Link} from 'react-router-dom'
+import Checkout from './Checkout'
 
 class Cart extends Component {
   constructor(props) {
@@ -29,6 +31,8 @@ class Cart extends Component {
   handleClick(event) {
     if (event.target.name === 'clear') {
       this.props.clearCart()
+    } else {
+      this.props.history.push('/checkout')
     }
   }
 
@@ -46,8 +50,9 @@ class Cart extends Component {
               />
             ))}
         </ul>
-        <button type="submit" name="order" onClick={this.handleClick}>
-          Submit Order
+
+        <button type="submit" name="checkout" onClick={this.handleClick}>
+          Checkout
         </button>
         <button type="submit" name="clear" onClick={this.handleClick}>
           Clear Cart
