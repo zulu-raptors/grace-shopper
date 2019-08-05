@@ -7,16 +7,6 @@ const GET_CART = 'GET_CART'
 const CLEAR_CART = 'CLEAR_CART'
 const ADD_TO_CART = 'ADD_TO_CART'
 const UPDATE_CART = 'UPDATE_CART'
-const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
-const DELETE_FROM_CART = 'DELETE_FROM_CART'
-
-// let currentCart
-// if (localStorage.getItem('cart')){
-//    currentCart = JSON.parse(localStorage.getItem('cart'))
-// } else {
-//    currentCart = []
-// }
-//not sure if JSON.parse is needed, we can try without it if this doesn't work
 
 const getCart = cart => {
   return {
@@ -38,21 +28,6 @@ const updateCart = (id, quantity) => {
     type: UPDATE_CART,
     id,
     quantity
-  }
-}
-
-const removeFromCart = (product, quantity) => {
-  return {
-    type: REMOVE_FROM_CART,
-    product,
-    quantity
-  }
-}
-
-const deleteFromCart = product => {
-  return {
-    type: DELETE_FROM_CART,
-    product
   }
 }
 
@@ -118,11 +93,8 @@ export const clearCartThunk = () => {
 }
 
 export const cartReducer = (state = [], action) => {
-  let products
-  let searchId
   let orderIndex
   let newState
-  let remained
   switch (action.type) {
     case GET_CART:
       return action.cart
@@ -156,33 +128,6 @@ export const cartReducer = (state = [], action) => {
       }
     case CLEAR_CART:
       return []
-
-    // case ADD_TO_CART:
-    //   searchId = state.findIndex(product => product.id === action.product.id)
-    //   if(searchId > -1){
-    //      products = state;
-    //     products.searchid.quantity += 1
-    //   } else {
-    //     products = state.concat([{
-    //       id: action.product.id,
-    //       product: action.product,
-    //       quantity: 1
-    //     }])
-    //   }
-    //   localStorage.setItem('cart', JSON.stringify(products))
-    //   history.push('/cart')
-    //   return products
-
-    // case DELETE_FROM_CART:
-    //   searchId = state.findIndex(product => product.id === action.product.id)
-    //   if (searchId > -1) {
-    //     products = state
-    //     products.splice(searchId, 1)
-    //   }
-    //   localStorage.setItem('cart', JSON.stringify(products))
-    //   history.push('/cart')
-    //   return products
-
     default:
       return state
   }
