@@ -13,6 +13,9 @@ const OrderProduct = require('./order_product')
 Order.belongsTo(User)
 User.hasMany(Order)
 
+OrderProduct.belongsTo(Order)
+Order.hasMany(OrderProduct)
+
 Order.belongsToMany(Product, {through: 'order_product', foreignKey: 'orderId'})
 Product.belongsToMany(Order, {
   through: 'order_product',
