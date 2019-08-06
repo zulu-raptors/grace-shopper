@@ -14,11 +14,12 @@ const Navbar = ({handleClick, isLoggedIn, user}) => (
       {isLoggedIn ? (
         <div className="block">
           {/* The navbar will show these links after you log in */}
+
           <Link
             className="link"
             style={{color: '#23d160'}}
             activeStyle={{color: '#ffdd57'}}
-            to="/"
+            to="/products"
           >
             Home
           </Link>
@@ -26,13 +27,15 @@ const Navbar = ({handleClick, isLoggedIn, user}) => (
             Cart
           </Link>
           <a className="link" href="#" onClick={handleClick}>
+
             Logout
           </a>
         </div>
       ) : (
         <div>
           {/* The navbar will show these links before you log in */}
-          <Link className="link" to="/">
+
+          <Link className="link" to="/products">
             Home
           </Link>
           <Link className="link" to="/cart">
