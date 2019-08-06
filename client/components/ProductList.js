@@ -11,10 +11,16 @@ class ProductList extends React.Component {
   render() {
     const products = this.props.products
     return (
-      <div id="product-list" className="level1">
-        {products.map(product => {
-          return <ProductRow key={product.id} product={product} />
-        })}
+      <div id="product-list">
+        <div className="tile-is-child">
+          {products.map(product => {
+            return (
+              <div key={product.id} className="product-items">
+                <ProductRow product={product} />
+              </div>
+            )
+          })}
+        </div>
       </div>
     )
   }
