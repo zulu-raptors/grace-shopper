@@ -1,13 +1,24 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getCartThunk} from '../store/cart'
+import {getCartThunk, clearCartThunk} from '../store/cart'
 
 class CheckoutInfo extends React.Component {
+  constructor(props) {
+    super(props)
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick(event) {
+    event.preventDefault()
+    this.props.clearCart()
+    this.props.history.push('/')
+  }
+
   render() {
     const cart = this.props.cart
     const user = this.props.user
     let count = 1
-    let total = 0
+    let total = 0.0
     return (
       <div id="checkout-info" className="level1">
         <p>
@@ -44,6 +55,10 @@ class CheckoutInfo extends React.Component {
           <br />
           <p>Total is: ${total} </p>
         </div>
+        <button type="button" onClick={this.handleClick}>
+          {' '}
+          Done{' '}
+        </button>
       </div>
     )
   }
@@ -58,7 +73,8 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    getCart: cart => dispatch(getCartThunk(cart))
+    getCart: cart => dispatch(getCartThunk(cart)),
+    clearCart: () => dispatch(clearCartThunk())
   }
 }
 
