@@ -14,23 +14,27 @@ class Checkout extends Component {
       expired: '',
       cvv: '',
       address: '',
-      email: ''
+      email: '',
+      status: 'created'
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleClick = this.handleClick.bind(this)
+  }
+
+  componentDidMount() {
+    this.props.getCart()
   }
 
   async handleChange(event) {
     await this.setState({
       [event.target.name]: event.target.value
     })
-    console.log(this.state)
   }
 
   async handleClick(event) {
     event.preventDefault()
-    console.log(this.state)
-    await axios.post('/api/order', this.state)
+    await axios.post('/api/cart', {info: this.state, cart: this.props.cart})
+    this.props.history.push('/checkoutinfo')
   }
 
   render() {
@@ -80,13 +84,25 @@ class Checkout extends Component {
             onChange={this.handleChange}
             value={this.state.cvv}
           />
+          <button type="submit" onClick={this.handleClick}>
+            Submit
+          </button>
         </form>
-        <button type="submit" onClick={this.props.handleClick}>
-          Submit
-        </button>
       </div>
     )
   }
 }
 
-export default Checkout
+const mapState = state => {
+  return {
+    cart: state.cart
+  }
+}
+
+const mapDispatch = dispatch => {
+  return {
+    getCart: cart => dispatch(getCartThunk(cart))
+  }
+}
+
+export default connect(mapState, mapDispatch)(Checkout)
