@@ -7,7 +7,7 @@ class ProductRow extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      quantity: 0
+      quantity: 1
     }
     this.handleClick = this.handleClick.bind(this)
     this.handleSelect = this.handleSelect.bind(this)
@@ -16,7 +16,7 @@ class ProductRow extends Component {
   handleClick(event) {
     console.log(this.props.product)
     this.props.addToCart(this.props.product, this.state.quantity)
-    this.setState({quantity: 0})
+    this.setState({quantity: 1})
   }
 
   async handleSelect(event) {
@@ -38,7 +38,7 @@ class ProductRow extends Component {
         <div key={product.id}>
           <div>
             <select onChange={this.handleSelect}>
-              <option>-Quantity-</option>
+              <option>1</option>
               {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => (
                 <option key={num} value={num}>
                   {num}
