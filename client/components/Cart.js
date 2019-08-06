@@ -2,17 +2,23 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {getCartThunk, updateCartThunk, clearCartThunk} from '../store/cart'
 import EachCart from './EachCart'
-import {Link} from 'react-router-dom'
-import Checkout from './Checkout'
 
 class Cart extends Component {
   constructor(props) {
     super(props)
     this.handleClick = this.handleClick.bind(this)
+    this.getSubtotal = this.getSubtotal.bind(this)
   }
 
   componentDidMount() {
     this.props.getCart()
+  }
+
+  async handleChange(event) {
+    await this.setState({
+      quantity: event.target.value
+    })
+    console.log(this.state)
   }
 
   handleClick(event) {
@@ -23,13 +29,21 @@ class Cart extends Component {
     }
   }
 
+  getSubtotal(cart) {
+    let subtotal = 0
+    for (let i = 0; i < cart.length; i++) {
+      subtotal += cart[i].price * cart[i].quantity
+    }
+    return subtotal
+  }
+
   render() {
-    console.log('first')
+    let {cart} = this.props
     return (
       <div>
         <ul>
-          {this.props.cart &&
-            this.props.cart.map(order => (
+          {cart &&
+            cart.map(order => (
               <EachCart
                 key={order.id}
                 order={order}
@@ -37,7 +51,7 @@ class Cart extends Component {
               />
             ))}
         </ul>
-
+        <p>Subtotal: ${cart && this.getSubtotal(cart) / 100} </p>
         <button type="submit" name="checkout" onClick={this.handleClick}>
           Checkout
         </button>
