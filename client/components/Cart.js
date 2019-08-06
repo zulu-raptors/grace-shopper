@@ -8,24 +8,11 @@ import Checkout from './Checkout'
 class Cart extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      quantity: ''
-    }
-    this.handleChange = this.handleChange.bind(this)
     this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount() {
-    console.log('second')
     this.props.getCart()
-    console.log(this.props.cart)
-  }
-
-  async handleChange(event) {
-    await this.setState({
-      quantity: event.target.value
-    })
-    console.log(this.state)
   }
 
   handleClick(event) {
@@ -63,7 +50,10 @@ class Cart extends Component {
 }
 
 const mapState = state => {
-  return {cart: state.cart}
+  return {
+    cart: state.cart,
+    user: state.user
+  }
 }
 
 const mapDispatch = dispatch => {

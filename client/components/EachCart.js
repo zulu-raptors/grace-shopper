@@ -19,7 +19,6 @@ class EachCart extends Component {
     await this.setState({
       quantity: event.target.value
     })
-    console.log(this.state)
   }
 
   render() {
