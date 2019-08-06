@@ -6,10 +6,6 @@ import EachCart from './EachCart'
 class Cart extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      quantity: ''
-    }
-    this.handleChange = this.handleChange.bind(this)
     this.handleClick = this.handleClick.bind(this)
     this.getSubtotal = this.getSubtotal.bind(this)
   }
@@ -68,7 +64,10 @@ class Cart extends Component {
 }
 
 const mapState = state => {
-  return {cart: state.cart}
+  return {
+    cart: state.cart,
+    user: state.user
+  }
 }
 
 const mapDispatch = dispatch => {

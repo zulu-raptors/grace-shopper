@@ -15,6 +15,11 @@ class EachCart extends Component {
     this.props.updateCart(this.props.order.id, this.state.quantity)
   }
 
+  async handleChange(event) {
+    await this.setState({
+      quantity: event.target.value
+    })
+
   async handleSelect(event) {
     event.preventDefault()
     await this.setState({quantity: event.target.value})
