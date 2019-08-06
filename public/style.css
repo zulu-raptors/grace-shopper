@@ -23,3 +23,7 @@ form div {
 .product-image {
   height: 120px;
 }
+
+.modal-content {
+  margin: 10%; /* Magic! */
+}
