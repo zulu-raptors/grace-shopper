@@ -17,7 +17,6 @@ class Checkout extends Component {
       email: '',
       status: 'created'
     }
-    console.log(this.props.cart)
     this.handleChange = this.handleChange.bind(this)
     this.handleClick = this.handleClick.bind(this)
   }
@@ -34,8 +33,8 @@ class Checkout extends Component {
 
   async handleClick(event) {
     event.preventDefault()
-    console.log(this.state)
     await axios.post('/api/cart', {info: this.state, cart: this.props.cart})
+    this.props.history.push('/checkoutinfo')
   }
 
   render() {
@@ -85,10 +84,10 @@ class Checkout extends Component {
             onChange={this.handleChange}
             value={this.state.cvv}
           />
+          <button type="submit" onClick={this.handleClick}>
+            Submit
+          </button>
         </form>
-        <button type="submit" onClick={this.handleClick}>
-          Submit
-        </button>
       </div>
     )
   }

@@ -19,6 +19,7 @@ class EachCart extends Component {
     await this.setState({
       quantity: event.target.value
     })
+  }
 
   async handleSelect(event) {
     event.preventDefault()
