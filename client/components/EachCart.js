@@ -1,4 +1,3 @@
-
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
@@ -32,26 +31,35 @@ class EachCart extends Component {
     let {order} = this.props
     return (
       <div key={order.id}>
-        <p>
+        <p className="is-size-3 has-text-centered">
           {order.name} ${order.price / 100}
         </p>
-        <img src={order.imageUrl} className="product-image" />
-        <p>quantity: {order.quantity}</p>
-        <p>total: ${order.quantity * order.price / 100}</p>
-        <div>
-          <select onChange={this.handleSelect}>
-            <option>-Quantity-</option>
-            {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => (
-              <option key={num} value={num}>
-                {num}
-              </option>
-            ))}
-          </select>
-          <button type="submit" onClick={this.handleClick}>
-            update
-          </button>
+        <img src={order.imageUrl} className="has-image-centered" />
+        <p className="is-size-3 has-text-centered">
+          Quantity: {order.quantity}
+        </p>
+        <p className="is-size-3 has-text-centered">
+          Total: ${order.quantity * order.price / 100}
+        </p>
+        <div className="each-cart-select">
+          <div id="cart-select" className="select is-multiple is-primary">
+            <select onChange={this.handleSelect}>
+              <option>-Quantity-</option>
+              {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => (
+                <option key={num} value={num}>
+                  {num}
+                </option>
+              ))}
+            </select>
+            <button
+              className="button is-warning is-medium"
+              type="submit"
+              onClick={this.handleClick}
+            >
+              update
+            </button>
+          </div>
         </div>
-        <hr />
       </div>
     )
   }

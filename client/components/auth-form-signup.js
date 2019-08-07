@@ -28,36 +28,40 @@ class AuthForm extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit} name={name}>
-          <div>
-            <label htmlFor="firstName">
+          <div className="field">
+            <label className="label" htmlFor="firstName">
               <small>First Name</small>
             </label>
-            <input name="firstName" type="text" />
+            <input className="input" name="firstName" type="text" />
           </div>
           <div>
-            <label htmlFor="lastName">
+            <label className="label" htmlFor="lastName">
               <small>Last Name</small>
             </label>
-            <input name="lastName" type="text" />
+            <input className="input" name="lastName" type="text" />
           </div>
           <div>
-            <label htmlFor="email">
+            <label className="label" htmlFor="email">
               <small>Email</small>
             </label>
-            <input name="email" type="text" />
+            <input className="input" name="email" type="text" />
           </div>
           <div>
-            <label htmlFor="password">
+            <label className="label" htmlFor="password">
               <small>Password</small>
             </label>
-            <input name="password" type="password" />
+            <input className="input" name="password" type="password" />
           </div>
           <div>
-            <button type="submit">Sign Up</button>
+            <button className="button is-info" type="submit">
+              Sign Up
+            </button>
           </div>
           {/* {error && error.response && <div> {error.response.data} </div>} */}
         </form>
-        <a href="/auth/google">Sign Up with Google</a>
+        <a className="button is-info" href="/auth/google">
+          Sign Up with Google
+        </a>
       </div>
     )
   }
