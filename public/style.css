@@ -32,6 +32,8 @@ form div {
 .product-image {
   height: 250px;
   width: 250px;
+  justify-content: center;
+  margin-top: 15px;
 }
 
 .all-products {
@@ -60,4 +62,63 @@ form div {
 
 .modal-content {
   margin: 10%; /* Magic! */
+}
+
+.link-text {
+  color: #23d160;
+}
+.link-text:hover {
+  color: grey;
+}
+
+.has-image-centered {
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.each-cart-select {
+  display: flex;
+  justify-content: center;
+}
+
+.checkout-button {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 50px;
+}
+
+#single-product {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+#select {
+  display: flex;
+}
+
+/* #single-select {
+  display: flex;
+  align-items: flex-end;
+} */
+
+#single-add {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+#cart-select {
+  display: flex;
+}
+
+#checkout-submit {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+#done-button {
+  margin-top: 10px;
+  margin-bottom: 15px;
 }

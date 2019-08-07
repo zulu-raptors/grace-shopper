@@ -34,24 +34,34 @@ class SingleProduct extends Component {
     const singleProduct = this.props.singleProduct
     return (
       <div>
-        <img src={singleProduct.imageUrl} className="product-image" />
-        <p>{singleProduct.name}</p>
-        <p>{singleProduct.brand}</p>
-        <p>{`$${singleProduct.price / 100}`}</p>
-        <p>{singleProduct.description}</p>
-        <p>{localStorage.total}</p>
-        <div>
-          <form>
-            <label htmlFor="quantity">quantity:</label>
-            <input
-              type="number"
-              onChange={this.handleChange}
-              value={this.state.quantity}
-            />
-          </form>
-          <button type="submit" onClick={this.handleClick}>
-            Add item
-          </button>
+        <div id="single-product">
+          <img src={singleProduct.imageUrl} className="product-image" />
+          <p className="is-size-3">{singleProduct.name}</p>
+          <p className="is-size-4">{singleProduct.brand}</p>
+          <p className="is-size-3">{`$${singleProduct.price / 100}`}</p>
+          <p>{singleProduct.description}</p>
+          <p>{localStorage.total}</p>
+          <div id="single-select">
+            <form>
+              <label className="label" htmlFor="quantity">
+                Quantity:
+              </label>
+              <input
+                className="input is-medium"
+                type="number"
+                onChange={this.handleChange}
+                value={this.state.quantity}
+              />
+            </form>
+            <button
+              id="single-add"
+              className="button is-warning"
+              type="submit"
+              onClick={this.handleClick}
+            >
+              Add item
+            </button>
+          </div>
         </div>
       </div>
     )

@@ -21,14 +21,14 @@ class CheckoutInfo extends React.Component {
     let total = 0
     return (
       <div id="checkout-info" className="level1">
-        <p>
-          Congrats, {user.firstName ? user.firstName : 'guest'}. Your payment is
-          accepted
+        <p className="is-size-3">
+          Congrats, {user.firstName ? user.firstName : 'friend'}. Your payment
+          is accepted
         </p>
         <br />
-        <p> You've bought: </p>
+        <p className="is-size-4"> You've bought: </p>
         <div id="cart" className="level2">
-          <table>
+          <table className="table">
             <tbody>
               <th>Number</th>
               <th>Name</th>
@@ -53,9 +53,14 @@ class CheckoutInfo extends React.Component {
             </tbody>
           </table>
           <br />
-          <p>Total is: ${total} </p>
+          <p className="is-size-4">Total is: ${total} </p>
         </div>
-        <button type="button" onClick={this.handleClick}>
+        <button
+          id="done-button"
+          className="button is-info"
+          type="button"
+          onClick={this.handleClick}
+        >
           Done
         </button>
       </div>
