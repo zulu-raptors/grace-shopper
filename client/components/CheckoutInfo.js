@@ -18,7 +18,7 @@ class CheckoutInfo extends React.Component {
     const cart = this.props.cart
     const user = this.props.user
     let count = 1
-    let total = 0.0
+    let total = 0
     return (
       <div id="checkout-info" className="level1">
         <p>
@@ -45,8 +45,8 @@ class CheckoutInfo extends React.Component {
                       <td>{product.name}</td>
                       <td>{product.brand}</td>
                       <td>{product.quantity}</td>
-                      <td>{product.price / 100}</td>
-                      <td>{product.price / 100 * product.quantity}</td>
+                      <td>${product.price / 100}</td>
+                      <td>${product.price / 100 * product.quantity}</td>
                     </tr>
                   )
                 })}
@@ -56,8 +56,7 @@ class CheckoutInfo extends React.Component {
           <p>Total is: ${total} </p>
         </div>
         <button type="button" onClick={this.handleClick}>
-          {' '}
-          Done{' '}
+          Done
         </button>
       </div>
     )

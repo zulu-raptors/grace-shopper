@@ -34,7 +34,7 @@ class ProductRow extends Component {
             <img src={product.imageUrl} className="product-image" />
             <p>{product.name}</p>
             <p>{product.brand}</p>
-            <p>{product.price / 100}</p>
+            <p>${product.price / 100}</p>
           </Link>
           <div key={product.id}>
             <div className="select is-multiple is-primary">
@@ -54,7 +54,6 @@ class ProductRow extends Component {
                 Add To Cart
               </button>
             </div>
-
           </div>
         </div>
       </div>
