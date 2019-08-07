@@ -57,3 +57,7 @@ form div {
   flex-basis: 40%;
   justify-content: center;
 }
+
+.modal-content {
+  margin: 10%; /* Magic! */
+}

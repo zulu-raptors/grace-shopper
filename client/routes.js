@@ -8,6 +8,9 @@ import ProductList from './components/ProductList'
 import Cart from './components/Cart'
 import SingleProduct from './components/SingleProduct'
 import Checkout from './components/Checkout'
+import Modal from './components/modal'
+
+import CheckoutInfo from './components/CheckoutInfo'
 
 /**
  * COMPONENT
@@ -27,7 +30,9 @@ class Routes extends Component {
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/checkout" component={Checkout} />
-        <Route exact path="/" component={ProductList} />
+        <Route exact path="/products" component={ProductList} />
+        <Route exact path="/" component={Modal} />
+        <Route exact path="/checkoutinfo" component={CheckoutInfo} />
         <Route path="/products/:productId" component={SingleProduct} />
       </withRouter>
     )

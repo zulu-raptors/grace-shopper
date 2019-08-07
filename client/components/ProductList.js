@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {getProductsThunk} from '../store/product'
 import ProductRow from './ProductRow'
+import Modal from './modal'
 
 class ProductList extends React.Component {
   componentDidMount() {
@@ -11,6 +12,7 @@ class ProductList extends React.Component {
   render() {
     const products = this.props.products
     return (
+
       <div id="product-list">
         <div className="all-products">
           {products.map(product => {
@@ -18,7 +20,7 @@ class ProductList extends React.Component {
               <div key={product.id} className="product-items">
                 <ProductRow product={product} />
               </div>
-            )
+
           })}
         </div>
       </div>
