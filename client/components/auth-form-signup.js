@@ -21,7 +21,7 @@ class AuthForm extends Component {
       password: evt.target.password.value
     }
     this.props.signUp(user)
-    this.props.history.push('/')
+    this.props.history.push('/products')
   }
 
   render() {
