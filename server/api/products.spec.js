@@ -18,8 +18,8 @@ describe('/api/products/', () => {
     price: 2000
   }
 
-  beforeEach(() => {
-    return Product.create(newBeer)
+  beforeEach(async () => {
+    await Product.create(newBeer)
   })
 
   it('GET /api/products', async () => {

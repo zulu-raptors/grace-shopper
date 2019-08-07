@@ -4,7 +4,7 @@ const {expect} = require('chai')
 const request = require('supertest')
 const db = require('../db')
 const app = require('../index')
-const User = require('../db/models/user')
+const User = db.model('user')
 
 describe('User routes', () => {
   beforeEach(() => {
@@ -13,9 +13,10 @@ describe('User routes', () => {
 
   describe('/api/users/', () => {
     const cody = {
-      email: 'cody@puppybook.com',
       firstName: 'Cody',
-      lastName: 'ThePug'
+      lastName: 'ThePug',
+      email: 'cody123@puppybook.com',
+      isAdmin: true
     }
 
     beforeEach(() => {
