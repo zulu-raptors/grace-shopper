@@ -53,7 +53,9 @@ class CheckoutInfo extends React.Component {
             </tbody>
           </table>
           <br />
-          <p className="is-size-4">Total is: ${total} </p>
+
+          <p className="is-size-4">Total is: ${total.toFixed(2)} </p>
+
         </div>
         <button
           id="done-button"
