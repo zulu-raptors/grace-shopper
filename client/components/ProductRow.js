@@ -32,12 +32,12 @@ class ProductRow extends Component {
         <div className="product-box">
           <Link to={'products/' + product.id}>
             <img src={product.imageUrl} className="product-image" />
-            <p>{product.name}</p>
-            <p>{product.brand}</p>
-            <p>${product.price / 100}</p>
+            <p className="link-text">{product.name}</p>
+            <p className="link-text">{product.brand}</p>
+            <p className="link-text">${product.price / 100}</p>
           </Link>
           <div key={product.id}>
-            <div className="select is-multiple is-primary">
+            <div className="select is-multiple is-primary" id="select">
               <select onChange={this.handleSelect}>
                 <option>-Quantity-</option>
                 {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => (

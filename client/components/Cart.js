@@ -51,13 +51,27 @@ class Cart extends Component {
               />
             ))}
         </ul>
-        <p>Subtotal: ${cart && this.getSubtotal(cart) / 100} </p>
-        <button type="submit" name="checkout" onClick={this.handleClick}>
-          Checkout
-        </button>
-        <button type="submit" name="clear" onClick={this.handleClick}>
-          Clear Cart
-        </button>
+        <p className="is-size-3 has-text-centered">
+          Subtotal: ${cart && this.getSubtotal(cart) / 100}{' '}
+        </p>
+        <div className="checkout-button">
+          <button
+            className="button is-info"
+            type="submit"
+            name="checkout"
+            onClick={this.handleClick}
+          >
+            Checkout
+          </button>
+          <button
+            className="button is-danger"
+            type="submit"
+            name="clear"
+            onClick={this.handleClick}
+          >
+            Clear Cart
+          </button>
+        </div>
       </div>
     )
   }
