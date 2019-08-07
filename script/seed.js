@@ -11,7 +11,7 @@ const products = [
     description:
       'First the bright, fresh golden colour and rich frothy head so typical of this elegant Pilsner beer. Its refined herbal notes are delicately poised, followed by a nutty and honeyed aftertaste. The overall impression of this gently sparkling beer is one of deep harmony, with the unmistakeable bitterness of the hops balanced and contained by an agreeable, mellow sweetness in the body.',
     imageUrl:
-      'https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_cf161e55-2dc7-42f5-b5e9-7aa13ae93948.jpg',
+      'https://www.bitburger-international.com/fileadmin/_processed_/0/a/csm_Bit_Pils_180406_320x300_01072019_a4796a4dd7.jpg',
     price: 1299
   },
   {
@@ -20,7 +20,7 @@ const products = [
     description:
       'As you might’ve guessed we’re from Germany, but what might surprise you is that we’re the world’s first Hefeweizen (wheat beer) grapefruit beer. Best served cold, it’s the perfect casual brew to cool you off during the summer, but it can be enjoyed all year round any time of the day. It’s a true 50/50 blend of total refreshment made from 50% Schofferhofer Hefeweizen blended with 50% carbonated juice of 100% natural ingredients.',
     imageUrl:
-      'https://cdn.shopify.com/s/files/1/0566/6837/products/schoffer_grapefruit_grande.jpg?v=1550461097',
+      'https://www.sherryswine.com/thumb/thumbme.html?src=/images/sites/sherryswine/labels/schofferhofer-grapefruit-weizen-mix_1.jpg&w=220&h=250',
     price: 1099
   },
   {
@@ -46,7 +46,7 @@ const products = [
     description:
       ' Our golden-yellow wheat beer, with its fine-poured white foam, smells of cloves and impresses consumers with its refreshing banana flavour. It is full bodied and with a smooth yeast taste. To be enjoyed at any time,goes excellently with fish and seafood, with spicy cheese and especially with the traditional Bavarian veal sausage. Brewed according to our centuries-old brewing tradition on the Weihenstephan hill.',
     imageUrl:
-      'https://devinecellars.com.au/wp-content/uploads/k4_beer_international_weihenstephaner_hefe_weissbier_12pk.jpg',
+      'https://i1.wp.com/www.worldbeersguide.com/wp-content/uploads/2016/04/Weihenstephaner-Hefeweissbier.jpg?resize=450%2C445',
     price: 999
   },
   {
@@ -74,14 +74,6 @@ const products = [
     imageUrl:
       'https://i2.wp.com/simonsaysbeer.com/wp-content/uploads/2017/01/wp-image-1371930644jpg.jpg?zoom=2&resize=640%2C853',
     price: 799
-  },
-  {
-    name: 'Heady Topper',
-    brand: 'The Alchemist',
-    description: 'An American Double IPA. Drink from the can.',
-    imageUrl:
-      'https://www.tripsavvy.com/thmb/j16ngPzenjW3ukKmCts3i1hy0ac=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/heady-topper-58e258523df78c5162add349.jpg',
-    price: 1099
   }
 ]
 
