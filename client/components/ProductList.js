@@ -14,7 +14,7 @@ class ProductList extends React.Component {
     return (
 
       <div id="product-list">
-        <div className="tile-is-child">
+        <div className="all-products">
           {products.map(product => {
             return (
               <div key={product.id} className="product-items">

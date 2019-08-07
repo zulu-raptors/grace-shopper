@@ -1,5 +1,6 @@
 body {
   font-family: sans-serif;
+  background-color: #23d160;
 }
 
 a {
@@ -29,7 +30,32 @@ form div {
 }
 
 .product-image {
-  height: 200px;
+  height: 250px;
+  width: 250px;
+}
+
+.all-products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.product-row {
+  justify-content: center;
+}
+
+.product-box {
+  margin: 15px;
+  margin-top: 20px;
+  padding: 5px;
+  border: solid black;
+  background-color: black;
+  width: 90%;
+}
+
+.product-items {
+  flex-basis: 40%;
+  justify-content: center;
 }
 
 .modal-content {
