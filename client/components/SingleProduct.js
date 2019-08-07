@@ -7,10 +7,10 @@ class SingleProduct extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      quantity: ''
+      quantity: 0
     }
-    this.handleChange = this.handleChange.bind(this)
     this.handleClick = this.handleClick.bind(this)
+    this.handleSelect = this.handleSelect.bind(this)
   }
 
   componentDidMount() {
@@ -18,16 +18,15 @@ class SingleProduct extends Component {
     this.props.getSingleProduct(productId)
   }
 
-  async handleChange(event) {
-    await this.setState({
-      quantity: event.target.value
-    })
-    console.log(this.state)
-  }
-
   handleClick() {
     console.log(this.props.match.params.productId, this.state.quantity)
     this.props.addToCart(this.props.singleProduct, this.state.quantity)
+  }
+
+  async handleSelect(event) {
+    event.preventDefault()
+    await this.setState({quantity: event.target.value})
+    console.log(this.state)
   }
 
   render() {
@@ -41,14 +40,14 @@ class SingleProduct extends Component {
         <p>{singleProduct.description}</p>
         <p>{localStorage.total}</p>
         <div>
-          <form>
-            <label htmlFor="quantity">quantity:</label>
-            <input
-              type="number"
-              onChange={this.handleChange}
-              value={this.state.quantity}
-            />
-          </form>
+          <select onChange={this.handleSelect}>
+            <option>-Quantity-</option>
+            {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => (
+              <option key={num} value={num}>
+                {num}
+              </option>
+            ))}
+          </select>
           <button type="submit" onClick={this.handleClick}>
             Add item
           </button>
