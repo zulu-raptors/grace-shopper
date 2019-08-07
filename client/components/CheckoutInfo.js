@@ -11,7 +11,7 @@ class CheckoutInfo extends React.Component {
   handleClick(event) {
     event.preventDefault()
     this.props.clearCart()
-    this.props.history.push('/')
+    this.props.history.push('/products')
   }
 
   render() {
