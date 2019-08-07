@@ -14,7 +14,6 @@ class ProductRow extends Component {
   }
 
   handleClick(event) {
-    console.log(this.props.product)
     this.props.addToCart(this.props.product, this.state.quantity)
     this.setState({quantity: 1})
   }
